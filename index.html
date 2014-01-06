@@ -30,8 +30,17 @@
             <tbody id="tblRegistro"></tbody>
         </table>
     </body>
+    <script src="cordova.js" type="text/javascript"></script>
     <script src="lib/jquery.js"></script>
     <script>
+        // Wait for Apache Cordova to load
+        document.addEventListener("deviceready", onDeviceReady, false);
+        
+        // PhoneGap is ready
+        function onDeviceReady() {
+            
+                
+        }
         var storage = null;
         var dataEntrySelector = [];
         var els = $(".data-entry");
