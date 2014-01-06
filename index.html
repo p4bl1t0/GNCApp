@@ -64,7 +64,7 @@
                     document.getElementById('tblRegistro').innerHTML += "<tr>" + _data + "</tr>";    
                 }
             }
-            document.getElementById('btnCargar').addEventListener('click', function (event) {
+            document.getElementById('btnCargar').addEventListener('touchstart', function (event) {
                 event.preventDefault();
                 storage = localStorage.getItem('carapp.registros');
                 storage = JSON.parse(storage);
