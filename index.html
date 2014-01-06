@@ -15,7 +15,9 @@
             <input type="text" id="txtUnidad"  class="data-entry" />
             <label for="txtTotal">Total</label>
             <input type="text" id="txtTotal"  class="data-entry" />
-            <button id="btnCargar">Cargar</button>
+            <div><button id="btnCargar">Cargar</button></div>
+            <div><a href="#" id="btnCargar2">Cargar</a></div>
+            <div><span id="btnCargar3">Cargar</span></div>
         </form>
         <h2>Registro anteriores</h2>
         <table>
@@ -49,7 +51,43 @@
             dataEntrySelector.push(els[i].getAttribute("id"));
         }
         console.log(dataEntrySelector);
-        document.addEventListener( "DOMContentLoaded", function() {
+        function handleClick (event) {
+            event.preventDefault();
+            alert("click");
+            storage = localStorage.getItem('carapp.registros');
+            storage = JSON.parse(storage);
+            var registro = {};
+            for(var i = 0; i < dataEntrySelector.length; i++) {
+                registro[dataEntrySelector[i]] = $("#" + dataEntrySelector[i]).value;
+            }
+            console.log(registro);
+            storage.push(registro);
+            localStorage.setItem('carapp.registros', JSON.stringify(storage));
+            var _data = ""; 
+            for(var j = 0; j < dataEntrySelector.length; j++) {
+                _data += "<td>" + registro[dataEntrySelector[j]] + "</td>";
+            }
+            document.getElementById('tblRegistro').innerHTML += "<tr>" + _data + "</tr>";    
+        }
+        function handleTouch(event) {
+            event.preventDefault();
+            alert("click");
+            storage = localStorage.getItem('carapp.registros');
+            storage = JSON.parse(storage);
+            var registro = {};
+            for(var i = 0; i < dataEntrySelector.length; i++) {
+                registro[dataEntrySelector[i]] = $("#" + dataEntrySelector[i]).value;
+            }
+            console.log(registro);
+            storage.push(registro);
+            localStorage.setItem('carapp.registros', JSON.stringify(storage));
+            var _data = ""; 
+            for(var j = 0; j < dataEntrySelector.length; j++) {
+                _data += "<td>" + registro[dataEntrySelector[j]] + "</td>";
+            }
+            document.getElementById('tblRegistro').innerHTML += "<tr>" + _data + "</tr>";    
+        }
+        document.addEventListener("DOMContentLoaded", function() {
             storage = JSON.parse(localStorage.getItem('carapp.registros'));
             if(storage === null || storage === '') {
                 var storage = [];
@@ -64,23 +102,12 @@
                     document.getElementById('tblRegistro').innerHTML += "<tr>" + _data + "</tr>";    
                 }
             }
-            document.getElementById('btnCargar').addEventListener('touchstart', function (event) {
-                event.preventDefault();
-                storage = localStorage.getItem('carapp.registros');
-                storage = JSON.parse(storage);
-                var registro = {};
-                for(var i = 0; i < dataEntrySelector.length; i++) {
-                    registro[dataEntrySelector[i]] = $("#" + dataEntrySelector[i]).value;
-                }
-                console.log(registro);
-                storage.push(registro);
-                localStorage.setItem('carapp.registros', JSON.stringify(storage));
-                var _data = ""; 
-                for(var j = 0; j < dataEntrySelector.length; j++) {
-                    _data += "<td>" + registro[dataEntrySelector[j]] + "</td>";
-                }
-                document.getElementById('tblRegistro').innerHTML += "<tr>" + _data + "</tr>";    
-            }, false);
+            document.getElementById('btnCargar').addEventListener('click', handleClick , false);
+            document.getElementById('btnCargar2').addEventListener('click', handleClick , false);
+            document.getElementById('btnCargar3').addEventListener('click', handleClick , false);
+            document.getElementById('btnCargar').addEventListener('touchstart', handleTouch , false);
+            document.getElementById('btnCargar2').addEventListener('touchstart', handleTouch , false);
+            document.getElementById('btnCargar3').addEventListener('touchstart', handleTouch , false);
         }, false);
     </script>
 </html>
