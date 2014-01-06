@@ -38,44 +38,45 @@
         // PhoneGap is ready
         function onDeviceReady() {
             //alert("device ready");
-        }
-        var storage = null;
-        var dataEntrySelector = [];
-        var els = $(".data-entry");
-        for(var i = 0; i < els.length; i++) {
-            dataEntrySelector.push(els.get(i).getAttribute("id"));
-        }
-        $(document).ready(function(){
-            //storage = JSON.parse(localStorage.getItem('carapp.registros'));
-            /*if(storage === null || storage === '') {
-                var storage = [];
-                localStorage.setItem('carapp.registros', JSON.stringify(storage));
-            } else {
-                storage = JSON.parse(localStorage.getItem('carapp.registros'));
-                for (var i = 0; i < storage.length; i++) {
+            var storage = null;
+            var dataEntrySelector = [];
+            var els = $(".data-entry");
+            for(var i = 0; i < els.length; i++) {
+                dataEntrySelector.push(els.get(i).getAttribute("id"));
+            }
+            $(document).ready(function(){
+                storage = JSON.parse(window.localStorage.getItem('carapp.registros'));
+                if(storage === null || storage === '') {
+                    var storage = [];
+                    window.localStorage.setItem('carapp.registros', JSON.stringify(storage));
+                } else {
+                    storage = JSON.parse(window.localStorage.getItem('carapp.registros'));
+                    for (var i = 0; i < storage.length; i++) {
+                        var _data = ""; 
+                        for(var j = 0; j < dataEntrySelector.length; j++) {
+                            _data += "<td>" + storage[i][dataEntrySelector[j]] + "</td>";
+                        }
+                        $('#tblRegistro').html($('#tblRegistro').html() + "<tr>" + _data + "</tr>");    
+                    }
+                }
+                $("#btnCargar").click(function(event){
+                    event.preventDefault();
+                    storage = window.localStorage.getItem('carapp.registros');
+                    storage = JSON.parse(storage);
+                    var registro = {};
+                    for(var i = 0; i < dataEntrySelector.length; i++) {
+                        registro[dataEntrySelector[i]] = $("#" + dataEntrySelector[i]).val();
+                    }
+                    storage.push(registro);
+                    window.localStorage.setItem('carapp.registros', JSON.stringify(storage));
                     var _data = ""; 
                     for(var j = 0; j < dataEntrySelector.length; j++) {
-                        _data += "<td>" + storage[i][dataEntrySelector[j]] + "</td>";
+                        _data += "<td>" + registro[dataEntrySelector[j]] + "</td>";
                     }
-                    $('#tblRegistro').html($('#tblRegistro').html() + "<tr>" + _data + "</tr>");    
-                }
-            }*/
-            $("#btnCargar").click(function(event){
-                event.preventDefault();
-                //storage = localStorage.getItem('carapp.registros');
-                //storage = JSON.parse(storage);
-                var registro = {};
-                for(var i = 0; i < dataEntrySelector.length; i++) {
-                    registro[dataEntrySelector[i]] = $("#" + dataEntrySelector[i]).val();
-                }
-                //storage.push(registro);
-                //localStorage.setItem('carapp.registros', JSON.stringify(storage));
-                var _data = ""; 
-                for(var j = 0; j < dataEntrySelector.length; j++) {
-                    _data += "<td>" + registro[dataEntrySelector[j]] + "</td>";
-                }
-                $('#tblRegistro').html($('#tblRegistro').html() + "<tr>" + _data + "</tr>");   
-            });    
-        });
+                    $('#tblRegistro').html($('#tblRegistro').html() + "<tr>" + _data + "</tr>");   
+                });    
+            });
+        }
+        
     </script>
 </html>
