@@ -41,11 +41,17 @@
             var storage = null;
             var dataEntrySelector = [];
             var els = $(".data-entry");
+            console.log(els);
             for(var i = 0; i < els.length; i++) {
                 dataEntrySelector.push(els.get(i).getAttribute("id"));
             }
-            $(document).ready(function(){
-                storage = JSON.parse(window.localStorage.getItem('carapp.registros'));
+            console.log(dataEntrySelector);
+            $(document).ready(function() {
+                console.log("document ready");
+                storage = window.localStorage.getItem('carapp.registros');
+                console.log(storage);
+                storage = JSON.parse(storage);
+                console.log(storage);
                 if(storage === null || storage === '') {
                     var storage = [];
                     window.localStorage.setItem('carapp.registros', JSON.stringify(storage));
