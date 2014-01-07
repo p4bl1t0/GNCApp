@@ -50,8 +50,10 @@
                 console.log("document ready");
                 storage = window.localStorage.getItem('carapp.registros');
                 console.log(storage);
-                storage = JSON.parse(storage);
-                console.log(storage);
+                if(storage !== null) {
+                    storage = JSON.parse(storage);
+                    console.log(storage);
+                }
                 if(storage === null || storage === '') {
                     var storage = [];
                     window.localStorage.setItem('carapp.registros', JSON.stringify(storage));
