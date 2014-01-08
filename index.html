@@ -5,30 +5,42 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
 	<link rel="stylesheet" href="css/ratchet.css">
 	<link rel="stylesheet" href="css/app.css">
+	
 	<script src="lib/push.js"></script>
 	<script src="lib/ratchet.js"></script>
         <meta charset="utf-8"> 
     </head>
     <body>
 	<header class="bar-title">
-	  <h1 class="title">GNC App - Test</h1>
-	  <a  href="ver.html" class="button" data-transition="slide-in">
+	  <h1 class="title">GNC</h1>
+	  <a  href="ver.html" class="button" data-transition="fade">
 	    Ver Registros
 	  </a>
 	</header>
 	
 	<div class="content">
 	  <form>
-	      <label for="txtDate">Fecha</label>
-	      <input type="text" id="txtDate" class="data-entry" />
-	      <label for="txtKm">Kilometraje</label>
-	      <input type="number" id="txtKm" class="data-entry" />
-	      <label for="txtUnidad">Unidad</label>
-	      <input type="number" id="txtUnidad"  class="data-entry" />
-	      <label for="txtTotal">Total</label>
-	      <input type="number" id="txtTotal"  class="data-entry" />
+	      <div class="input-group">
+	        <div class="input-row">
+		    <label for="txtDate">Fecha</label>
+		    <input type="text" id="txtDate" class="data-entry" />
+		</div>
+		<div class="input-row">
+		    <label for="txtKm">Kilometraje</label>
+		    <input type="number" id="txtKm" class="data-entry" />
+		</div>
+		<div class="input-row">
+		    <label for="txtUnidad">Unidad</label>
+		    <input type="number" id="txtUnidad"  class="data-entry" />
+		</div>
+		<div class="input-row">
+		    <label for="txtTotal">Total</label>
+		    <input type="number" id="txtTotal"  class="data-entry" />
+		</div>
+	      </div>
 	      <div>
 		<a id="btnCargar" class="button button-block">Cargar</a>
 <!-- 		<button id="btnCargar">Cargar</button> -->
@@ -40,7 +52,8 @@
     <script src="lib/jquery.js"></script>
     <script>
         // Wait for Apache Cordova to load
-        document.addEventListener("deviceready", onDeviceReady, false);
+        document.addEve
+        ntListener("deviceready", onDeviceReady, false);
         // PhoneGap is ready
         function onDeviceReady() {
             //alert("device ready");
