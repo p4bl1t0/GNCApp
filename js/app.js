@@ -1,14 +1,15 @@
-(function(){
+//(function(){
     //VARIABLES GLOBALES A ESTE SCOPE
     //========================================================================================
     //FUNCIONES
     //========================================================================================
     function init() {
         var storage = null;
-        var dataEntrySelector = window.localStorage.getItem('carapp.dataEntrySelector');
-        //if(dataEntrySelector !== null) {
-        //    dataEntrySelector = JSON.parse(dataEntrySelector);
-        //} else {
+        var dataEntrySelector = null;
+        dataEntrySelector = window.localStorage.getItem('carapp.dataEntrySelector');
+        if(dataEntrySelector !== null) {
+            dataEntrySelector = JSON.parse(dataEntrySelector);
+        } else {
             dataEntrySelector = [];
             var els = $(".data-entry");
             if(els.length > 0) {
@@ -17,7 +18,7 @@
                 }
                 window.localStorage.setItem('carapp.dataEntrySelector', JSON.stringify(dataEntrySelector));
             }
-        //}
+        }
         console.log(dataEntrySelector);
         $(document).ready(function() {
             storage = window.localStorage.getItem('carapp.registros');
@@ -62,4 +63,4 @@
     //========================================================================================
     document.addEventListener("deviceready", init, false);
     //init();
-})();
+//})();
