@@ -1,16 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+}
+h1 {
+    font-size: 1.5em;
+}
+a {
+  text-decoration: none;
+}
+.main-header {
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#3f94bf), to(#246485));
+    background: -webkit-linear-gradient(#3f94bf, #246485);
+    background: -moz-linear-gradient(#3f94bf, #246485);
+    background: -o-linear-gradient(#3f94bf, #246485);
+    background: linear-gradient(#3f94bf, #246485);
+    padding: 5px;
+    text-align: center;
+    color: white;
+    text-shadow: #222 0px -1px 1px;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    transition: all 0.3s ease;
+}
+.main-header a {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: white;
+    font-size: 1.5em;
+}
+
+.page-wrap {
+    float: right;
+    width: 100%;
+    transition: width 0.3s ease;
+}
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: #3B3B3B;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+}
+.main-nav a {
+    display: block;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#3e3e3e), to(#383838));
+    background: -webkit-linear-gradient(#3e3e3e, #383838);
+    background: -moz-linear-gradient(#3e3e3e, #383838);
+    background: -o-linear-gradient(#3e3e3e, #383838);
+    background: linear-gradient(#3e3e3e, #383838);
+    border-top: 1px solid #484848;
+    border-bottom: 1px solid #2E2E2E;
+    color: white;
+    padding: 15px;
+}
+.main-nav a:hover, .main-nav a:focus {
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#484848), to(#383838));
+    background: -webkit-linear-gradient(#484848, #383838);
+    background: -moz-linear-gradient(#484848, #383838);
+    background: -o-linear-gradient(#484848, #383838);
+    background: linear-gradient(#484848, #383838);
+}
+.main-nav:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 34px;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.4)));
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+    background: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+    background: linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+
+.content {
+    padding: 100px 20px 20px 20px;
+}
+
+.close-menu {
+    display: none;
+}
+
+#main-nav:target {
+    width: 20%;
+}
+
+#main-nav:target + .page-wrap {
+    width: 80%;
+}
+#main-nav:target + .page-wrap .open-menu {
+    display: none;
+}
+#main-nav:target + .page-wrap .close-menu {
+    display: block;
+}
+#main-nav:target + .page-wrap .main-header {
+    width: 80%;
+    left: 20%;
+}
 .slider {
-  margin-bottom: 0;
-  height: 150px;
+    margin-bottom: 0;
+    height: 150px;
 }
 
 .slider li img {
-  width: 100%;
+    width: 100%;
 }
 
 .form-wrapper {
-  padding: 10px 0;
+    padding: 10px 0;
 }
 
 .form-wrapper [class*="button"] {
-  margin: 0 10px;
+    margin: 0 10px;
 }

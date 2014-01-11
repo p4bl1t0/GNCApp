@@ -1,108 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>GNC App - Test</title>
+        <title>GNC App</title>
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	
-	<link rel="stylesheet" href="css/ratchet.css">
-	<link rel="stylesheet" href="css/app.css">
-	
-	<script src="lib/push.js"></script>
-	<script src="lib/ratchet.js"></script>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta charset="utf-8"> 
+        <!--<link rel="stylesheet" href="css/ratchet.css">
+        <link rel="stylesheet" href="css/app.css">
+        <script src="lib/push.js"></script>
+        <script src="lib/ratchet.js"></script>-->
+        <link rel="stylesheet" href="css/app.css">
     </head>
     <body>
-	<header class="bar-title">
-	  <h1 class="title">GNC</h1>
-	  <a  href="ver.html" class="button" data-transition="fade">
-	    Ver Registros
-	  </a>
-	</header>
-	
-	<div class="content">
-	  <form>
-	      <div class="input-group">
-	        <div class="input-row">
-		    <label for="txtDate">Fecha</label>
-		    <input type="text" id="txtDate" class="data-entry" />
-		</div>
-		<div class="input-row">
-		    <label for="txtKm">Kilometraje</label>
-		    <input type="number" id="txtKm" class="data-entry" />
-		</div>
-		<div class="input-row">
-		    <label for="txtUnidad">Unidad</label>
-		    <input type="number" id="txtUnidad"  class="data-entry" />
-		</div>
-		<div class="input-row">
-		    <label for="txtTotal">Total</label>
-		    <input type="number" id="txtTotal"  class="data-entry" />
-		</div>
-	      </div>
-	      <div>
-		<a id="btnCargar" class="button button-block">Cargar</a>
-<!-- 		<button id="btnCargar">Cargar</button> -->
-	      </div>
-	  </form>
-	</div>
+        <nav class="main-nav" id="main-nav">
+            <a href="ver.html">Historial</a>
+            <a href="ajustes.html">Ajustes</a>
+            <a href="#">Salir</a>
+        </nav>
+        <div class="page-wrap">
+            <header class="main-header">
+                <a href="#main-nav" class="open-menu">☰</a>
+                <a href="#" class="close-menu">☰</a>
+                <h1>GNC</h1>
+            </header>
+            <div class="content">
+                <form>
+                    <div class="input-group">
+                        <div class="input-row">
+                            <label for="txtDate">Fecha</label>
+                            <input type="text" id="txtDate" class="data-entry" />
+                        </div>
+                        <div class="input-row">
+                            <label for="txtKm">Kilometraje</label>
+                            <input type="number" id="txtKm" class="data-entry" />
+                        </div>
+                        <div class="input-row">
+                            <label for="txtUnidad">Unidad</label>
+                            <input type="number" id="txtUnidad"  class="data-entry" />
+                        </div>
+                        <div class="input-row">
+                            <label for="txtTotal">Total</label>
+                            <input type="number" id="txtTotal"  class="data-entry" />
+                        </div>
+                    </div>
+                    <div>
+                        <a id="btnCargar" class="button button-block" href="#">Cargar</a>
+                        <!--<button id="btnCargar">Cargar</button> -->
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
     <!--<script src="cordova.android.js" type="text/javascript"></script>-->
     <script src="lib/jquery.js"></script>
-    <script>
-        // Wait for Apache Cordova to load
-        document.addEventListener("deviceready", onDeviceReady, false);
-        // PhoneGap is ready
-        function onDeviceReady() {
-            //alert("device ready");
-            var storage = null;
-            var dataEntrySelector = [];
-            var els = $(".data-entry");
-            console.log(els);
-            for(var i = 0; i < els.length; i++) {
-                dataEntrySelector.push(els.get(i).getAttribute("id"));
-            }
-            console.log(dataEntrySelector);
-            $(document).ready(function() {
-                console.log("document ready");
-                storage = window.localStorage.getItem('carapp.registros');
-                console.log(storage);
-                if(storage !== null) {
-                    storage = JSON.parse(storage);
-                    console.log(storage);
-                }
-                if(storage === null || storage === '') {
-                    var storage = [];
-                    window.localStorage.setItem('carapp.registros', JSON.stringify(storage));
-                } else {
-                    storage = JSON.parse(window.localStorage.getItem('carapp.registros'));
-                    //for (var i = 0; i < storage.length; i++) {
-                    //    var _data = ""; 
-                    //    for(var j = 0; j < dataEntrySelector.length; j++) {
-                    //        _data += "<td>" + storage[i][dataEntrySelector[j]] + "</td>";
-                    //    }
-                    //    $('#tblRegistro').html($('#tblRegistro').html() + "<tr>" + _data + "</tr>");    
-                    //}
-                }
-                $("#btnCargar").click(function(event){
-                    event.preventDefault();
-                    storage = window.localStorage.getItem('carapp.registros');
-                    storage = JSON.parse(storage);
-                    var registro = {};
-                    for(var i = 0; i < dataEntrySelector.length; i++) {
-                        registro[dataEntrySelector[i]] = $("#" + dataEntrySelector[i]).val();
-                    }
-                    storage.push(registro);
-                    window.localStorage.setItem('carapp.registros', JSON.stringify(storage));
-                    var _data = ""; 
-                    for(var j = 0; j < dataEntrySelector.length; j++) {
-                        _data += "<td>" + registro[dataEntrySelector[j]] + "</td>";
-                    }
-                    $('#tblRegistro').html($('#tblRegistro').html() + "<tr>" + _data + "</tr>");   
-                });    
-            });
-        }
-        
-    </script>
+    <script src="js/app.js"></script>
 </html>
