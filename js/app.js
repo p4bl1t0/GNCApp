@@ -35,6 +35,8 @@
                     $('#tblRegistro').html($('#tblRegistro').html() + "<tr>" + _data + "</tr>");    
                 }
             }
+            $('#txtDate').pickadate();
+            
             $("#btnCargar").click(function(event){
                 event.preventDefault();
                 storage = db.load('carapp.registros');
