@@ -36,6 +36,11 @@
                 }
             }
             $('#txtDate').pickadate();
+	    
+	    document.addEventListener("menubutton", function(){
+	      $('#btnMenu').click();
+	    }, false);
+
             
             $("#btnCargar").click(function(event){
                 event.preventDefault();
