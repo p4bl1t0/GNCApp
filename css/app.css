@@ -125,3 +125,14 @@ a {
 .form-wrapper [class*="button"] {
     margin: 0 10px;
 }
+.pure-form-stacked input,
+.pure-form-stacked select {
+    width: 100%;
+}
+.buttons-containers {
+    margin-top: 1em;
+}
+.buttons-containers .pure-button {
+    display: block;
+    width: 100%;
+}

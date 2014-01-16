@@ -2,15 +2,13 @@
 <html lang="es">
     <head>
         <title>GNC App</title>
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta charset="utf-8"> 
-        <!--<link rel="stylesheet" href="css/ratchet.css">
-        <link rel="stylesheet" href="css/app.css">
-        <script src="lib/push.js"></script>
-        <script src="lib/ratchet.js"></script>-->
-        <link rel="stylesheet" href="css/app.css">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta charset="utf-8" /> 
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/pure.min.css" />
+        <link rel="stylesheet" href="css/app.css" />
     </head>
     <body>
         <nav class="main-nav" id="main-nav">
@@ -20,34 +18,26 @@
         </nav>
         <div class="page-wrap">
             <header class="main-header">
-                <a href="#main-nav" class="open-menu">☰</a>
-                <a href="#" class="close-menu">☰</a>
+                <a href="#main-nav" class="open-menu"><i class="fa fa-bars"></i></a>
+                <a href="#" class="close-menu"><i class="fa fa-bars"></i></a>
                 <h1>GNC</h1>
             </header>
             <div class="content">
-                <form>
-                    <div class="input-group">
-                        <div class="input-row">
-                            <label for="txtDate">Fecha</label>
-                            <input type="text" id="txtDate" class="data-entry" />
+                <form class="pure-form pure-form-stacked">
+                    <fieldset>
+                        <legend>Registrar carga</legend>
+                        <label for="txtDate">Fecha</label>
+                        <input type="text" id="txtDate" class="data-entry" />
+                        <label for="txtKm">Kilometraje</label>
+                        <input type="number" id="txtKm" class="data-entry" />
+                        <label for="txtUnidad">Unidad</label>
+                        <input type="number" id="txtUnidad"  class="data-entry" />
+                        <label for="txtTotal">Total</label>
+                        <input type="number" id="txtTotal"  class="data-entry" />
+                        <div class="buttons-containers">
+                            <button type="submit" id="btnCargar" class="button button-block pure-button pure-button-primary" href="#">Cargar</button>
                         </div>
-                        <div class="input-row">
-                            <label for="txtKm">Kilometraje</label>
-                            <input type="number" id="txtKm" class="data-entry" />
-                        </div>
-                        <div class="input-row">
-                            <label for="txtUnidad">Unidad</label>
-                            <input type="number" id="txtUnidad"  class="data-entry" />
-                        </div>
-                        <div class="input-row">
-                            <label for="txtTotal">Total</label>
-                            <input type="number" id="txtTotal"  class="data-entry" />
-                        </div>
-                    </div>
-                    <div>
-                        <a id="btnCargar" class="button button-block" href="#">Cargar</a>
-                        <!--<button id="btnCargar">Cargar</button> -->
-                    </div>
+                    </fieldset>
                 </form>
             </div>
         </div>
@@ -56,6 +46,5 @@
     <script type="text/javascript" src="phonegap.js"></script>
     <script src="lib/jquery.js"></script>
     <script src="js/bd.js"></script>
-    <script>console.log(db);</script>
     <script src="js/app.js"></script>
 </html>
